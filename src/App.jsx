@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import "./App.css";
+import NewPost from "./components/NewPost";
 import PostsList from "./components/PostsList";
 import startPosts from "./data/startPosts";
 
@@ -7,6 +8,10 @@ function App() {
   const URL = "http://localhost:7777/posts";
 
   const [posts, setPosts] = useState(startPosts);
+
+  const handleAddNewPost = function (post) {
+    setPosts([...posts, post]);
+  };
 
   // useEffect(() => {
   //   fetch(URL)
@@ -19,6 +24,7 @@ function App() {
   return (
     <div className="App">
       <PostsList posts={posts} />
+      <NewPost addNewPost={handleAddNewPost} />
     </div>
   );
 }
