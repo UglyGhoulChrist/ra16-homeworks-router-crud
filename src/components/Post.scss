@@ -1,0 +1,35 @@
+.post {
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    border-radius: .125rem;
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+    &__top {
+        display: flex;
+        gap: 1rem;
+        align-items: flex-start;
+    }
+
+    &__image {
+        width: 60px;
+        aspect-ratio: 1/1;
+        border-radius: 50%;
+    }
+
+    &__name-id {
+        flex: auto;
+    }
+
+    &__name {
+        font-size: 1rem;
+        color: blue;
+    }
+
+    &__id {}
+
+    &__created {}
+
+    &__content {}
+}
