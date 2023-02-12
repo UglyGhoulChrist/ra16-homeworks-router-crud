@@ -4,12 +4,13 @@ import "./PostsList.scss";
 
 function PostsList({ posts }) {
   return (
-    <ul className="posts">
-      PostsList
-      {posts.map((post) => (
-        <Post key={post.id} {...post} />
-      ))}
-    </ul>
+    <main>
+      <ul className="posts">
+        {posts.map((post) => (
+          <Post key={post.id} {...post} />
+        ))}
+      </ul>
+    </main>
   );
 }
 
