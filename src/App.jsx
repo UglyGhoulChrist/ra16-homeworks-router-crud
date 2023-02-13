@@ -4,7 +4,6 @@ import "./App.css";
 import Home from "./pages/Home";
 import ViewPost from "./pages/ViewPost";
 import EditPost from "./pages/EditPost";
-import startPosts from "./data/startPosts";
 import NewPost from "./pages/NewPost";
 
 function App() {
@@ -24,8 +23,8 @@ function App() {
         <Routes>
           <Route path="/" element={<Home posts={posts} />} />
           <Route path="/posts/new" element={<NewPost />} />
-          {/*    <Route path="/posts/:id" element={ViewPost} />
-          <Route path="/posts/edit:id" element={EditPost} /> */}
+          <Route path="/posts/:id" element={<ViewPost posts={posts} />} />
+          {/*    <Route path="/posts/edit:id" element={EditPost} /> */}
         </Routes>
       </div>
     </BrowserRouter>

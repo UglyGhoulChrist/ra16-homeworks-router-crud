@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Button from "../UI/Button";
 import "./NewPost.scss";
 
@@ -7,11 +7,11 @@ function NewPost() {
   const URL = "http://localhost:7777/posts";
   // ! user захардкорен
   const [valueTextarea, setValueTextarea] = useState("");
+  const navigate = useNavigate();
+
   const handleSubmit = function (event) {
     event.preventDefault();
     if (valueTextarea.trim()) {
-      console.log("Публикую новый пост");
-
       fetch(URL, {
         method: "POST",
         headers: {
@@ -24,19 +24,18 @@ function NewPost() {
       })
         .then()
         .catch()
-        .finally(console.log("Add post end"));
-
-      setValueTextarea("");
+        .finally(() => {
+          setValueTextarea("");
+          navigate("/");
+        });
     } else {
-      // ToDo Сделать фокус на textarea
-      console.log("Пустой пост");
+      console.log("Пустой пост"); // ToDo Сделать фокус на textarea
     }
-    console.log("Нажата кнопка опубликовать");
   };
 
   return (
     <main className="new-post">
-      <Button text="X" />
+      <Button onClick={() => navigate("/")} text="X" />
       <form className="form" onSubmit={handleSubmit}>
         <textarea
           className="form__textarea"
