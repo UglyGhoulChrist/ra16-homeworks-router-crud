@@ -34,10 +34,19 @@ function App() {
       <div className="App">
         <Routes>
           <Route path="/" element={<Home posts={posts} />} />
-          <Route path="/posts/new" element={<NewPost />} />
+          <Route
+            path="/posts/new"
+            element={<NewPost setRender={() => setRender(Math.random())} />}
+          />
           <Route
             path="/posts/:id"
-            element={<ViewPost posts={posts} handleDeletePost={deletePost} />}
+            element={
+              <ViewPost
+                posts={posts}
+                handleDeletePost={deletePost}
+                setRender={() => setRender(Math.random())}
+              />
+            }
           />
           {/*<Route path="/posts/edit:id" element={EditPost} /> */}
         </Routes>

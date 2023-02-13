@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import Button from "../UI/Button";
 import "./NewPost.scss";
 
-function NewPost() {
+function NewPost({ setRender }) {
   const URL = "http://localhost:7777/posts";
   // ! user захардкорен
   const [valueTextarea, setValueTextarea] = useState("");
@@ -25,8 +25,12 @@ function NewPost() {
         .then()
         .catch()
         .finally(() => {
+          // Очищаем поле ввода
           setValueTextarea("");
+          // Переходим на главную
           navigate("/");
+          // Запускаем перерендер на главной
+          setRender();
         });
     } else {
       console.log("Пустой пост"); // ToDo Сделать фокус на textarea
