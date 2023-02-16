@@ -7,11 +7,13 @@ function ViewPost({ posts, handleDeletePost, setRender }) {
   // Вытаскиваю из массива постов пост с ID
   const params = useParams();
   const post = posts.find((post) => post.id === +params.id);
-
+  const navigate = useNavigate();
   const handleChangePost = () => {
     console.log("Нажали кнопку изменить пост");
+    // Добавляем в ЛокалСторадж просматриваемый пост
+    window.localStorage.setItem("viewPost", JSON.stringify(post));
+    navigate("/posts/new");
   };
-  const navigate = useNavigate();
 
   return (
     <div>

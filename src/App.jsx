@@ -3,10 +3,10 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
 import Home from "./pages/Home";
 import ViewPost from "./pages/ViewPost";
-import EditPost from "./pages/EditPost";
 import NewPost from "./pages/NewPost";
 
 function App() {
+  window.localStorage.clear("viewPost");
   const URL = "http://localhost:7777/posts";
   const [posts, setPosts] = useState([]);
   const [render, setRender] = useState(0);
@@ -48,7 +48,6 @@ function App() {
               />
             }
           />
-          {/*<Route path="/posts/edit:id" element={EditPost} /> */}
         </Routes>
       </div>
     </BrowserRouter>

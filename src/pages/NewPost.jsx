@@ -4,9 +4,12 @@ import Button from "../UI/Button";
 import "./NewPost.scss";
 
 function NewPost({ setRender }) {
+  // Достаём из ЛокалСторадж просматриваемый пост
+  const viewPost = JSON.parse(window.localStorage.getItem("viewPost"));
+  console.log("viewPost", viewPost);
   const URL = "http://localhost:7777/posts";
   // ! user захардкорен
-  const [valueTextarea, setValueTextarea] = useState("");
+  const [valueTextarea, setValueTextarea] = useState(viewPost?.content || "");
   const navigate = useNavigate();
 
   const handleSubmit = function (event) {
@@ -18,7 +21,7 @@ function NewPost({ setRender }) {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          id: 0,
+          id: viewPost?.id || 0,
           content: valueTextarea.trim(),
         }),
       })
