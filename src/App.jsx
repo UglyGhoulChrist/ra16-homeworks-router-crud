@@ -4,29 +4,32 @@ import "./App.css";
 import Home from "./pages/Home";
 import ViewPost from "./pages/ViewPost";
 import NewPost from "./pages/NewPost";
+import URL from "./url/url";
 
 function App() {
   window.localStorage.clear("viewPost");
-  const URL = "http://localhost:7777/posts";
   const [posts, setPosts] = useState([]);
+  // Для перерендера страницы
   const [render, setRender] = useState(0);
 
   useEffect(() => {
+    // Получение постов
     fetch(URL)
       .then((res) => res.json())
       .then((posts) => setPosts(posts))
-      .catch((error) => console.log(error))
-      .finally(console.log("finnaly"));
+      .catch()
+      .finally();
   }, [render]);
 
+  // Удаление поста по ИД
   const deletePost = (id) => {
-    fetch(URL + "/" + id, {
+    fetch(`${URL}/${id}`, {
       method: "DELETE",
     })
       .then()
       .then()
       .catch()
-      .finally(console.log("Удаляем пост", id));
+      .finally();
   };
 
   return (

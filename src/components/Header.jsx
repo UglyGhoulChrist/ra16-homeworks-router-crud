@@ -7,7 +7,10 @@ function Header() {
   const navigate = useNavigate();
   return (
     <header className="header">
-      <Button onClick={() => navigate("posts/new")} text="Создать новый пост" />
+      <Button
+        onClick={() => navigate("/posts/new")}
+        text="Создать новый пост"
+      />
     </header>
   );
 }

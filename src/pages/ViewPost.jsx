@@ -9,7 +9,6 @@ function ViewPost({ posts, handleDeletePost, setRender }) {
   const post = posts.find((post) => post.id === +params.id);
   const navigate = useNavigate();
   const handleChangePost = () => {
-    console.log("Нажали кнопку изменить пост");
     // Добавляем в ЛокалСторадж просматриваемый пост
     window.localStorage.setItem("viewPost", JSON.stringify(post));
     navigate("/posts/new");

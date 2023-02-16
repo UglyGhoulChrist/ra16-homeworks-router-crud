@@ -11,7 +11,7 @@ function Post({ id, created, content }) {
   const navigate = useNavigate();
 
   return (
-    <li onClick={() => navigate(`posts/${id}`)} className="post">
+    <li onClick={() => navigate(`/posts/${id}`)} className="post">
       <div className="post__top">
         <img className="post__image" src={img} />
         <div className="post__name-id">

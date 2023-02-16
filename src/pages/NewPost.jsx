@@ -1,14 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import Button from "../UI/Button";
 import "./NewPost.scss";
+import URL from "../url/url";
 
 function NewPost({ setRender }) {
   // Достаём из ЛокалСторадж просматриваемый пост
   const viewPost = JSON.parse(window.localStorage.getItem("viewPost"));
-  console.log("viewPost", viewPost);
-  const URL = "http://localhost:7777/posts";
-  // ! user захардкорен
   const [valueTextarea, setValueTextarea] = useState(viewPost?.content || "");
   const navigate = useNavigate();
 
@@ -36,20 +34,25 @@ function NewPost({ setRender }) {
           setRender();
         });
     } else {
-      console.log("Пустой пост"); // ToDo Сделать фокус на textarea
+      // Фокус на textarea
+      document.getElementsByTagName("textarea")[0].focus();
     }
   };
 
   return (
     <main className="new-post">
-      <Button onClick={() => navigate("/")} text="X" />
+      <Button
+        onClick={() => navigate(viewPost ? `/posts/${viewPost.id}` : "/")}
+        text="X"
+      />
       <form className="form" onSubmit={handleSubmit}>
         <textarea
+          autoFocus
           className="form__textarea"
           onChange={(event) => setValueTextarea(event.target.value)}
           value={valueTextarea}
         />
-        <Button text="Опубликовать пост" />
+        <Button text={viewPost ? "Сохранить изменения" : "Опубликовать пост"} />
       </form>
     </main>
   );
