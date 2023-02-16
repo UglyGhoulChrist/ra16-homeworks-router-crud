@@ -1,14 +1,13 @@
 import React from "react";
 import Button from "../UI/Button";
-import { NavLink } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./Header.scss";
 
 function Header() {
+  const navigate = useNavigate();
   return (
     <header className="header">
-      <NavLink to="posts/new">
-        <Button text="Создать новый пост" />
-      </NavLink>
+      <Button onClick={() => navigate("posts/new")} text="Создать новый пост" />
     </header>
   );
 }
